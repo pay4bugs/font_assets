@@ -23,7 +23,7 @@ module FontAssets
     def call(env)
       @ssl_request = Rack::Request.new(env).scheme == "https"
       # intercept the "preflight" request
-      if env["REQUEST_METHOD"] == "OPTIONS"
+      if env["REQUEST_METHOD"] == "OPTIONS" && false # stop overwriting OPTIONS requests
         return [200, access_control_headers, []]
       else
         code, headers, body = @app.call(env)
