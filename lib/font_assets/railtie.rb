@@ -8,7 +8,7 @@ module FontAssets
       config.font_assets.origin ||= "*"
       config.font_assets.options ||= { allow_ssl: true }
 
-      insert_target = 'Rack::Lock'
+      insert_target = 'Rack::Runtime'
   
       app.middleware.insert_before insert_target, FontAssets::Middleware, config.font_assets.origin, config.font_assets.options
     end
